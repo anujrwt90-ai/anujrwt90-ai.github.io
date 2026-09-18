@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MediaHub Admin</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="index.html">MEDIA<span>HUB</span></a><nav><a href="index.html">← Back to Library</a></nav></header>
+<main class="admin" style="max-width:900px;margin:auto;padding:55px 6%">
+<p class="eyebrow">CONTENT MANAGEMENT</p><h1>Admin Panel</h1><p class="hero-copy">Add catalog metadata. This demo stores data only in this browser using localStorage.</p>
+<form id="form" style="display:grid;gap:14px;margin-top:30px">
+<input id="title" placeholder="Title" required><select id="type"><option value="movie">Movie</option><option value="series">Series</option><option value="anime">Anime</option><option value="other">Other</option></select>
+<input id="year" type="number" placeholder="Release year" required><input id="genre" placeholder="Genre" required><input id="rating" type="number" step=".1" min="0" max="10" placeholder="Rating" required><input id="emoji" placeholder="Poster emoji, e.g. 🎬">
+<textarea id="description" rows="5" placeholder="Description"></textarea><button class="cta" type="submit">Add Content</button>
+</form>
+<section style="margin-top:50px"><h2>Current Items</h2><div id="adminList" style="display:grid;gap:10px"></div></section>
+</main>
+<script>
+let items=JSON.parse(localStorage.getItem("mediahub_content")||"[]");
+const $=s=>document.querySelector(s);
+function save(){localStorage.setItem("mediahub_content",JSON.stringify(items))}
+function draw(){ $("#adminList").innerHTML=items.map(x=>`<div style="display:flex;justify-content:space-between;gap:10px;padding:14px;background:#11141a;border:1px solid #1f242d;border-radius:10px"><span>${x.emoji||"🎬"} <b>${x.title}</b> · ${x.type} · ${x.year}</span><button onclick="removeItem(${x.id})" class="icon-btn">Delete</button></div>`).join("")||'<p class="meta">No items yet.</p>'}
+function removeItem(id){items=items.filter(x=>x.id!==id);save();draw()}
+$("#form").onsubmit=e=>{e.preventDefault();items.push({id:Date.now(),title:$("#title").value,type:$("#type").value,year:+$("#year").value,genre:$("#genre").value,rating:+$("#rating").value,emoji:$("#emoji").value,description:$("#description").value});save();e.target.reset();draw()}
+draw();
+</script></body></html>
