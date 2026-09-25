@@ -10,7 +10,8 @@
 <header class="topbar">
   <a class="brand" href="#">MEDIA<span>HUB</span></a>
   <nav>
-    <a href="#home">Home</a><a href="#movies">Movies</a><a href="#series">Series</a><a href="#anime">Anime</a>
+    <a href="#home">Home</a><a href="#library">Library</a><a href="#movies">Movies</a><a href="#series">Series</a><a href="#anime">Anime</a>
+    <a href="tracker.html">My Tracker</a>
     <a href="admin.html">Admin</a>
   </nav>
   <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☀</button>
@@ -21,8 +22,11 @@
   <div>
     <p class="eyebrow">YOUR CONTENT LIBRARY</p>
     <h1>Discover something<br><span>worth watching.</span></h1>
-    <p class="hero-copy">Manage and explore your movies, series, anime and other content in one clean dashboard.</p>
-    <a class="cta" href="#library">Browse Library →</a>
+    <p class="hero-copy">Manage, explore and track your movies, series, anime and other content in one clean dashboard.</p>
+    <div class="hero-actions">
+      <a class="cta" href="#library">Browse Library →</a>
+      <a class="cta ghost" href="tracker.html">My Tracker →</a>
+    </div>
   </div>
 </section>
 
@@ -31,6 +35,12 @@
   <select id="typeFilter">
     <option value="all">All content</option><option value="movie">Movies</option>
     <option value="series">Series</option><option value="anime">Anime</option><option value="other">Other</option>
+  </select>
+  <select id="statusFilter">
+    <option value="all">Any status</option><option value="watching">Watching</option>
+    <option value="completed">Completed</option><option value="plan">Plan to Watch</option>
+    <option value="onhold">On Hold</option><option value="dropped">Dropped</option>
+    <option value="untracked">Untracked</option>
   </select>
   <select id="sort">
     <option value="latest">Latest</option><option value="rating">Top rated</option><option value="title">A–Z</option>
