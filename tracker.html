@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Tracker — MediaHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">MEDIA<span>HUB</span></a>
+  <nav>
+    <a href="index.html">← Library</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+  <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☀</button>
+</header>
+
+<main>
+<section class="hero tracker-hero">
+  <div>
+    <p class="eyebrow">PERSONAL WATCHLIST & PROGRESS</p>
+    <h1>Your <span>tracker.</span></h1>
+    <p class="hero-copy">Everything you're watching, finished, planning or dropped — with episode progress and your own scores, saved in this browser.</p>
+  </div>
+</section>
+
+<section class="toolbar tracker-toolbar">
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-status="all">All</button>
+    <button class="tab" data-status="watching">Watching</button>
+    <button class="tab" data-status="completed">Completed</button>
+    <button class="tab" data-status="plan">Plan to Watch</button>
+    <button class="tab" data-status="onhold">On Hold</button>
+    <button class="tab" data-status="dropped">Dropped</button>
+  </div>
+  <input id="trackerSearch" type="search" placeholder="Search tracked titles...">
+</section>
+
+<section class="stats-grid">
+  <div class="stat-box"><span class="stat-num" id="statTotal">0</span><span class="stat-label">Tracked</span></div>
+  <div class="stat-box"><span class="stat-num" id="statWatching">0</span><span class="stat-label">Watching</span></div>
+  <div class="progress-box">
+    <div class="stat-head"><span class="stat-num" id="statEpisodes">0</span><span class="stat-label">episodes watched</span></div>
+    <div class="bar"><i id="statBar"></i></div>
+  </div>
+  <div class="stat-box"><span class="stat-num" id="statAvg">–</span><span class="stat-label">avg. score</span></div>
+  <div class="stat-box"><span class="stat-num" id="statDays">0</span><span class="stat-label">hours watched</span></div>
+  <div class="stat-box"><span class="stat-num" id="statTime">0</span><span class="stat-label">time watched (hrs)</span></div>
+</section>
+
+<section class="content-section">
+  <div class="section-head"><h2>Tracked titles</h2><span id="trackerCount"></span></div>
+  <div class="tracker-list" id="trackerList"></div>
+  <div id="emptyState" class="empty-state hidden">
+    <span class="empty-emoji">📺</span>
+    <h3>Nothing tracked here yet</h3>
+    <p>Open the library and hit <b>Track</b> on any title to start building your watchlist.</p>
+    <a class="cta" href="index.html#library">Browse Library →</a>
+  </div>
+</section>
+</main>
+
+<div id="modal" class="modal hidden"><div class="modal-box"><button id="closeModal" class="close">×</button><div id="modalContent"></div></div></div>
+<footer>MediaHub v2 · Content catalog & tracking demo</footer>
+<script src="tracker.js"></script>
+</body>
+</html>
